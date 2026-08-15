@@ -1,0 +1,583 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-cinzel: var(--font-cinzel), serif;
+    --font-playfair: var(--font-playfair), serif;
+    --font-garamond: var(--font-garamond), Georgia, serif;
+  }
+}
+
+/* Custom Utilities for Kafkaesque Theme */
+.font-cinzel {
+  font-family: var(--font-cinzel), 'Cinzel', serif;
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+}
+
+.font-garamond {
+  font-family: var(--font-garamond), 'EB Garamond', Georgia, serif;
+}
+
+/* Glowing Gold Text & Gaslamp Effects */
+.glow-gold-text {
+  color: #f7e6c4;
+  text-shadow: 0 0 10px rgba(212, 163, 89, 0.6),
+               0 0 20px rgba(212, 163, 89, 0.4),
+               0 0 35px rgba(197, 155, 39, 0.25);
+}
+
+.glow-amber-box {
+  box-shadow: 0 0 25px rgba(212, 163, 89, 0.25),
+              inset 0 0 15px rgba(212, 163, 89, 0.15);
+  border-color: rgba(212, 163, 89, 0.6);
+}
+
+.glow-card-active {
+  box-shadow: 0 0 30px rgba(220, 160, 60, 0.5),
+              0 0 10px rgba(220, 160, 60, 0.3),
+              inset 0 0 20px rgba(220, 160, 60, 0.2);
+  border-color: #e5a93c !important;
+}
+
+/* Ornate Border Frame */
+.ornate-border-gold {
+  border: 1px solid rgba(212, 163, 89, 0.4);
+  position: relative;
+}
+
+.ornate-border-gold::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px solid rgba(212, 163, 89, 0.2);
+  pointer-events: none;
+}
+
+/* Damask / Vintage Pattern Background */
+.damask-bg {
+  background-color: #0c0b0e;
+  background-image: radial-gradient(rgba(212, 163, 89, 0.07) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Paper Flying Animation */
+@keyframes floatUpArc {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.9) rotate(0deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-80px) translateX(-30px) scale(1.05) rotate(-12deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-180px) translateX(-60px) scale(1.1) rotate(-25deg);
+  }
+}
+
+.animate-paper-float {
+  animation: floatUpArc 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Subtle analogue texture for the film-like opening sequence. */
+.cinematic-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+  animation: filmGrain 0.18s steps(2) infinite;
+}
+
+@keyframes filmGrain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1%, 1%); }
+  50% { transform: translate(1%, -1%); }
+  75% { transform: translate(1%, 1%); }
+  100% { transform: translate(-1%, -1%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-grain {
+    animation: none;
+  }
+}
+
+/* The Threshold Engine is a purpose-built GSAP/canvas installation. */
+.threshold-engine {
+  min-height: 780px;
+}
+
+.threshold-engine canvas {
+  image-rendering: auto;
+}
+
+.threshold-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(233, 222, 201, 0.3);
+  background: rgba(13, 12, 11, 0.82);
+  padding: 10px 12px;
+  color: #e9dec9;
+  font-family: var(--font-cinzel), serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  .threshold-engine {
+    min-height: 740px;
+  }
+}
+
+/* The archive moves away from a decorative fantasy look into a restrained,
+   high-contrast Kafka film language: soot, paper, institutional red. */
+body {
+  background: #0a0a09;
+}
+
+#chambers,
+#typewriter,
+#archive,
+#onboarding {
+  border-color: rgba(232, 220, 201, 0.16) !important;
+}
+
+#chambers {
+  background:
+    radial-gradient(circle at 75% 20%, rgba(123, 35, 29, 0.22), transparent 30rem),
+    linear-gradient(180deg, #0d0d0c 0%, #16110f 100%) !important;
+}
+
+#typewriter {
+  background:
+    linear-gradient(90deg, rgba(165, 45, 37, 0.08) 1px, transparent 1px),
+    linear-gradient(#11100e, #080808) !important;
+  background-size: 38px 38px !important;
+}
+
+#archive {
+  background:
+    radial-gradient(ellipse at center, rgba(220, 204, 177, 0.07), transparent 45%),
+    #11100e !important;
+}
+
+#onboarding {
+  background:
+    linear-gradient(135deg, rgba(166, 45, 37, 0.2), transparent 42%),
+    #0b0b0a !important;
+}
+
+#chambers h2,
+#typewriter h2,
+#archive h2,
+#onboarding h2 {
+  color: #f3ebdf !important;
+  font-family: var(--font-playfair), Georgia, serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.035em !important;
+  text-shadow: none !important;
+}
+
+#chambers > div:first-child > div:first-child,
+#typewriter > div:first-child > div:first-child,
+#archive > div:first-child > div:first-child,
+#onboarding > div:first-child > div:first-child {
+  border-color: #ad3c33 !important;
+  background: #ad3c33 !important;
+  color: #fff5e8 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Chamber cards become worn film frames instead of glowing game cards. */
+#chambers .grid > .group {
+  border-radius: 0 !important;
+  border-color: rgba(234, 222, 202, 0.24) !important;
+  background: rgba(12, 12, 11, 0.74) !important;
+  box-shadow: none !important;
+}
+
+#chambers .grid > .group h3,
+#archive h3 {
+  font-family: var(--font-playfair), Georgia, serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+}
+
+#chambers .grid > .group > div:first-child,
+#archive .group > div > div:first-child {
+  border-radius: 0 !important;
+}
+
+/* The desk is now an evidence table, not a neon dashboard. */
+#typewriter .rounded-xl,
+#typewriter .rounded-lg,
+#archive .rounded-lg,
+#onboarding .rounded-2xl {
+  border-radius: 0 !important;
+}
+
+#typewriter .max-w-6xl > .relative,
+#onboarding .max-w-4xl > .relative {
+  border-color: rgba(235, 220, 198, 0.36) !important;
+  background: rgba(18, 17, 15, 0.94) !important;
+  box-shadow: 18px 20px 0 rgba(0, 0, 0, 0.34) !important;
+}
+
+#archive .group > div {
+  padding: 10px !important;
+  border: 1px solid rgba(235, 220, 198, 0.34) !important;
+  border-radius: 0 !important;
+  background: #191714 !important;
+  box-shadow: 10px 12px 0 rgba(0, 0, 0, 0.35) !important;
+}
+
+#archive .group > div > div:last-child {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #b43b31 !important;
+  color: #fff6e9 !important;
+}
+
+#archive .group > div > div:last-child span {
+  color: #fff6e9 !important;
+}
+
+.kafka-modal {
+  max-height: min(760px, calc(100dvh - 2rem));
+  overflow-y: auto;
+  border-color: rgba(243, 232, 213, 0.55) !important;
+  border-radius: 0 !important;
+  background: #151311 !important;
+  box-shadow: 18px 22px 0 rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(180, 59, 49, 0.3) !important;
+}
+
+.kafka-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 40;
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 245, 231, 0.68);
+  background: #ad3c33;
+  padding: 0 10px;
+  color: #fff8ee;
+  font-family: var(--font-cinzel), serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 #070707;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.kafka-portrait-frame {
+  border: 1px solid rgba(232, 218, 197, 0.46);
+  padding: 10px;
+  background: #171512;
+  box-shadow: 18px 20px 0 rgba(0, 0, 0, 0.38);
+}
+
+.kafka-quote-card {
+  background: linear-gradient(145deg, rgba(255, 250, 241, 0.015), transparent);
+}
+
+/* The archive is deliberately calm: no card jumps, image colour shifts, or
+   simulated depth on hover. The stillness is part of the atmosphere. */
+#chambers .group,
+#archive .group,
+#typewriter .group {
+  transform: none !important;
+  transition: none !important;
+}
+
+#chambers .group:hover,
+#archive .group:hover,
+#typewriter .group:hover {
+  transform: none !important;
+  box-shadow: inherit !important;
+}
+
+#chambers .group:hover img,
+#archive .group:hover img {
+  filter: grayscale(1) contrast(1.25) !important;
+  transform: none !important;
+}
+
+@media (max-width: 640px) {
+  .kafka-modal-close {
+    top: 10px;
+    right: 10px;
+    min-height: 34px;
+    padding: 0 8px;
+  }
+}
+
+/* CSS-only spatial model for the Kafka Square reading. */
+.kafka-square-scene {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  perspective: 1050px;
+  background: radial-gradient(circle at 52% 44%, rgba(183, 62, 53, 0.18), transparent 40%), #0b0b0a;
+  border: 1px solid rgba(230, 218, 197, 0.22);
+}
+
+.square-scene-topbar {
+  position: absolute;
+  z-index: 20;
+  top: 12px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #c9b89e;
+  font-family: var(--font-cinzel), serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.square-live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 5px;
+  background: #c95249;
+  box-shadow: 0 0 12px #c95249;
+}
+
+.square-motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(230, 218, 197, 0.28);
+  background: rgba(15, 14, 12, 0.82);
+  padding: 7px 9px;
+  color: #e6dac5;
+  font: inherit;
+}
+
+.kafka-square-model {
+  position: relative;
+  width: 620px;
+  height: 450px;
+  margin: 3rem auto -4rem;
+  transform: rotateX(59deg) rotateZ(-37deg);
+  transform-style: preserve-3d;
+}
+
+.kafka-square-scene.is-moving .kafka-square-model {
+  animation: squareOrbit 14s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
+
+@keyframes squareOrbit {
+  from { transform: rotateX(59deg) rotateZ(-37deg) translate3d(-8px, 5px, 0); }
+  50% { transform: rotateX(62deg) rotateZ(-30deg) translate3d(9px, -3px, 10px); }
+  to { transform: rotateX(57deg) rotateZ(-42deg) translate3d(-5px, 3px, 0); }
+}
+
+.square-floor {
+  position: absolute;
+  inset: 24px 35px 24px 35px;
+  border: 1px solid rgba(237, 224, 202, 0.28);
+  background:
+    linear-gradient(90deg, transparent 49.6%, rgba(237, 224, 202, 0.13) 49.6%, rgba(237, 224, 202, 0.13) 50.4%, transparent 50.4%),
+    linear-gradient(transparent 49.6%, rgba(237, 224, 202, 0.13) 49.6%, rgba(237, 224, 202, 0.13) 50.4%, transparent 50.4%),
+    #25211c;
+  background-size: 38px 38px;
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.7);
+}
+
+.square-street {
+  position: absolute;
+  z-index: 2;
+  background: #070706;
+  box-shadow: 0 0 0 1px rgba(230, 218, 197, 0.12);
+}
+
+.square-street--one { width: 480px; height: 38px; left: 70px; top: 205px; }
+.square-street--two { width: 42px; height: 335px; left: 282px; top: 60px; }
+
+.square-route-light {
+  position: absolute;
+  z-index: 3;
+  width: 22px;
+  height: 5px;
+  background: #df6257;
+  box-shadow: 0 0 16px #df6257;
+}
+
+.square-route-light--one { left: 82px; top: 221px; }
+.square-route-light--two { left: 300px; top: 70px; width: 5px; height: 22px; }
+.kafka-square-scene.is-moving .square-route-light--one { animation: routeOne 5s linear infinite; }
+.kafka-square-scene.is-moving .square-route-light--two { animation: routeTwo 6.5s linear infinite; }
+
+@keyframes routeOne {
+  from { transform: translateX(0); opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  to { transform: translateX(440px); opacity: 0; }
+}
+
+@keyframes routeTwo {
+  from { transform: translateY(0); opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  to { transform: translateY(280px); opacity: 0; }
+}
+
+.square-fog {
+  position: absolute;
+  z-index: 6;
+  width: 180px;
+  height: 100px;
+  border-radius: 999px;
+  background: rgba(210, 194, 168, 0.12);
+  filter: blur(22px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.square-fog--one { left: 110px; top: 125px; }
+.square-fog--two { right: 82px; bottom: 82px; }
+.kafka-square-scene.is-moving .square-fog--one { animation: fogDrift 10s ease-in-out infinite alternate; }
+.kafka-square-scene.is-moving .square-fog--two { animation: fogDrift 13s ease-in-out -4s infinite alternate-reverse; }
+
+@keyframes fogDrift {
+  from { transform: translate3d(-15px, 5px, 0) scale(0.85); opacity: 0.28; }
+  to { transform: translate3d(25px, -15px, 0) scale(1.2); opacity: 0.7; }
+}
+
+.square-building,
+.square-door {
+  position: absolute;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(245, 232, 209, 0.52);
+  color: #eadcca;
+  font-family: var(--font-cinzel), serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: none;
+}
+
+.square-building::after,
+.square-building::before {
+  position: absolute;
+  content: "";
+  background: #28221d;
+  border: 1px solid rgba(245, 232, 209, 0.18);
+  transform-origin: left top;
+}
+
+.square-building::before {
+  width: 100%;
+  height: 38px;
+  left: -1px;
+  top: -1px;
+  transform: rotateX(90deg) translateY(-38px);
+  background: #494035;
+}
+
+.square-building::after {
+  width: 38px;
+  height: 100%;
+  right: -39px;
+  top: -1px;
+  transform: rotateY(90deg);
+  background: #1a1714;
+}
+
+.square-building--tower { width: 145px; height: 118px; left: 73px; top: 74px; background: #8f372f; }
+.square-building--alley { width: 116px; height: 82px; left: 352px; top: 86px; background: #3b332b; }
+.square-building--office { width: 164px; height: 106px; left: 350px; top: 266px; background: #27221d; }
+
+.square-door {
+  width: 54px;
+  height: 90px;
+  left: 213px;
+  top: 277px;
+  background: #0b0b0a;
+  box-shadow: 0 0 0 8px #27221d, 0 0 36px rgba(195, 65, 56, 0.2);
+}
+
+.square-building.is-active,
+.square-door.is-active {
+  background: #be453b;
+  color: #fff4e6;
+  box-shadow: 0 0 0 2px #f2ddc5, 0 0 32px rgba(203, 71, 61, 0.45);
+}
+
+.square-pin {
+  position: absolute;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #e5d5c1;
+  font-family: var(--font-cinzel), serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  transform: rotateZ(37deg) rotateX(-59deg) translateZ(45px);
+}
+
+.square-pin--one { left: 92px; top: 32px; }
+.square-pin--two { right: 50px; bottom: 57px; }
+
+@media (max-width: 700px) {
+  .kafka-square-scene { min-height: 330px; }
+  .kafka-square-model { margin: 1rem 0 -7rem -91px; transform: scale(0.67) rotateX(59deg) rotateZ(-37deg); transform-origin: top left; }
+  .kafka-square-scene.is-moving .kafka-square-model { animation: squareOrbitMobile 14s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate; }
+  .square-scene-topbar { font-size: 7px; }
+  .square-motion-toggle { padding: 6px; }
+}
+
+@keyframes squareOrbitMobile {
+  from { transform: scale(0.67) rotateX(59deg) rotateZ(-37deg) translate3d(-8px, 5px, 0); }
+  50% { transform: scale(0.67) rotateX(62deg) rotateZ(-30deg) translate3d(9px, -3px, 10px); }
+  to { transform: scale(0.67) rotateX(57deg) rotateZ(-42deg) translate3d(-5px, 3px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kafka-square-scene.is-moving .kafka-square-model,
+  .kafka-square-scene.is-moving .square-route-light,
+  .kafka-square-scene.is-moving .square-fog {
+    animation: none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0c;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a241e;
+  border: 1px solid #d4a35940;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a359;
+}
