@@ -203,6 +203,209 @@
   }
 }
 
+/* Unified cinematic exhibition system. These rules deliberately reshape the
+   restored sections into one visual world while preserving their content. */
+.kafka-film {
+  background: #0b0b09 !important;
+  color: #eee6d8 !important;
+}
+
+.kafka-film > header {
+  background: rgba(11, 11, 9, 0.9) !important;
+  border-color: rgba(233, 223, 207, 0.18) !important;
+}
+
+.kafka-film > header > div:first-child {
+  background: #11100e !important;
+  border-color: rgba(233, 223, 207, 0.12) !important;
+}
+
+.kafka-film > section {
+  border-color: rgba(233, 223, 207, 0.16) !important;
+}
+
+.kafka-film #chambers,
+.kafka-film #typewriter,
+.kafka-film #archive,
+.kafka-film #onboarding {
+  position: relative;
+  background: #0e0e0c !important;
+}
+
+.kafka-film #chambers::before,
+.kafka-film #typewriter::before,
+.kafka-film #archive::before,
+.kafka-film #onboarding::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(125deg, rgba(188, 70, 61, 0.11), transparent 38%);
+}
+
+.kafka-film #chambers > *,
+.kafka-film #typewriter > *,
+.kafka-film #archive > *,
+.kafka-film #onboarding > * {
+  position: relative;
+  z-index: 1;
+}
+
+.kafka-film #typewriter {
+  background:
+    linear-gradient(90deg, rgba(236, 224, 205, 0.045) 1px, transparent 1px),
+    linear-gradient(#0d0d0b, #14110f) !important;
+  background-size: 46px 46px !important;
+}
+
+.kafka-film #archive {
+  background: #17130f !important;
+}
+
+.kafka-film #onboarding {
+  background: #090908 !important;
+}
+
+.kafka-film #chambers h2,
+.kafka-film #typewriter h2,
+.kafka-film #archive h2,
+.kafka-film #onboarding h2 {
+  max-width: 980px;
+  color: #f2eadf !important;
+  font-family: var(--font-playfair), Georgia, serif !important;
+  font-size: clamp(2.7rem, 6vw, 5.4rem) !important;
+  font-weight: 600 !important;
+  line-height: 0.88 !important;
+  letter-spacing: -0.06em !important;
+  text-shadow: none !important;
+}
+
+.kafka-film #chambers > div:first-child p,
+.kafka-film #typewriter > div:first-child p,
+.kafka-film #archive > div:first-child p,
+.kafka-film #onboarding p {
+  color: #bcae9b !important;
+}
+
+.kafka-film #chambers > div:first-child > div:first-child,
+.kafka-film #typewriter > div:first-child > div:first-child,
+.kafka-film #archive > div:first-child > div:first-child,
+.kafka-film #onboarding > div:first-child > div:first-child {
+  border: 1px solid #c34d43 !important;
+  border-radius: 0 !important;
+  background: #c34d43 !important;
+  color: #fff6e8 !important;
+  box-shadow: none !important;
+}
+
+/* The three works are evidence panels, not product cards. */
+.kafka-film #chambers .grid > .group {
+  border: 1px solid rgba(235, 222, 202, 0.26) !important;
+  border-radius: 0 !important;
+  background: rgba(13, 13, 11, 0.82) !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.kafka-film #chambers .grid > .group > div:first-child,
+.kafka-film #chambers .grid > .group img {
+  border-radius: 0 !important;
+}
+
+.kafka-film #chambers .grid > .group img {
+  filter: grayscale(1) contrast(1.1) brightness(0.68) !important;
+  transform: none !important;
+}
+
+.kafka-film #chambers .grid > .group h3,
+.kafka-film #chambers .grid > .group p {
+  color: #f0e6d7 !important;
+  font-family: var(--font-playfair), Georgia, serif !important;
+  letter-spacing: -0.03em !important;
+}
+
+.kafka-film #chambers .grid > .group p {
+  color: #bcae9b !important;
+  font-family: var(--font-garamond), Georgia, serif !important;
+}
+
+/* The language lab becomes a dark writing table with one sheet of paper. */
+.kafka-film #typewriter .max-w-6xl > .relative {
+  border: 1px solid rgba(235, 222, 202, 0.28) !important;
+  border-radius: 0 !important;
+  background: #14120f !important;
+  box-shadow: 18px 22px 0 rgba(0, 0, 0, 0.34) !important;
+}
+
+.kafka-film #typewriter .rounded-xl,
+.kafka-film #typewriter .rounded-lg,
+.kafka-film #archive .rounded-lg,
+.kafka-film #onboarding .rounded-2xl {
+  border-radius: 0 !important;
+}
+
+.kafka-film #typewriter .bg-\[\#eae3d5\] {
+  border-color: #cfc0aa !important;
+  background: #e8dfd0 !important;
+  box-shadow: none !important;
+}
+
+/* Primary traces use simple contact-sheet frames, not antique gold. */
+.kafka-film #archive .group > div {
+  padding: 10px !important;
+  border: 1px solid rgba(235, 222, 202, 0.3) !important;
+  border-radius: 0 !important;
+  background: #12110f !important;
+  box-shadow: 10px 12px 0 rgba(0, 0, 0, 0.3) !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.kafka-film #archive .group > div img {
+  filter: grayscale(1) contrast(1.15) !important;
+  transform: none !important;
+}
+
+.kafka-film #archive .group > div > div:last-child {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #c34d43 !important;
+}
+
+.kafka-film #archive .group > div > div:last-child span {
+  color: #fff5e8 !important;
+}
+
+/* The ending becomes a quiet reading room, without wax-seal spectacle. */
+.kafka-film #onboarding .max-w-4xl > .relative {
+  border: 1px solid rgba(235, 222, 202, 0.3) !important;
+  border-radius: 0 !important;
+  background: #15120f !important;
+  box-shadow: 16px 18px 0 rgba(0, 0, 0, 0.32) !important;
+}
+
+.kafka-film #onboarding img[alt="Golden Wax Seal"] {
+  filter: grayscale(1) sepia(0.2) contrast(1.15) !important;
+}
+
+.kafka-film #onboarding footer {
+  margin-top: 6rem !important;
+}
+
+.kafka-film button,
+.kafka-film a,
+.kafka-film .group {
+  transition-duration: 0ms !important;
+}
+
+.kafka-film button:hover,
+.kafka-film a:hover,
+.kafka-film .group:hover {
+  transform: none !important;
+}
+
 /* The archive moves away from a decorative fantasy look into a restrained,
    high-contrast Kafka film language: soot, paper, institutional red. */
 body {
